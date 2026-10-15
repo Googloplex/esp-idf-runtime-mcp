@@ -1,0 +1,17 @@
+***ERROR*** A stack overflow in task sensor_task has been detected.
+
+
+Backtrace: 0x40081a6e:0x3ffc0e40 0x40086c11:0x3ffc0e60 0x40087f4e:0x3ffc0e80
+
+ELF file SHA256: 01
+Rebooting...
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+I (300) main: boot 2
+assert failed: parse_frame proto.c:142 (len <= MAX_FRAME)
+
+
+Backtrace: 0x40081a6e:0x3ffb4f10 0x40086b91:0x3ffb4f30 0x400d7e02:0x3ffb4f50
+
+ELF file SHA256: 01
+Rebooting...
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)

@@ -1,0 +1,12 @@
+[0;32mI (402) wifi: connecting to AP[0m
+ESP_ERROR_CHECK failed: esp_err_t 0x103 (ESP_ERR_INVALID_STATE) at 0x400d4a1f
+file: "main/net.c" line 87
+func: net_start
+expression: esp_wifi_start()
+
+abort() was called at PC 0x40086b9b on core 0
+
+
+Backtrace: 0x40081a6e:0x3ffb5560 0x40086ba5:0x3ffb5580 0x4008c1a1:0x3ffb55a0 0x40086b9b:0x3ffb5610 0x400d4a1f:0x3ffb5630 |<-CORRUPTED
+
+Rebooting...

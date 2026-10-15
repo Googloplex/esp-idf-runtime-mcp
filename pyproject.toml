@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "esp-runtime-mcp"
+version = "0.1.0"
+description = "MCP server for the runtime side of ESP-IDF: console capture, crash decoding, core dumps"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = [
+    "mcp>=2.2,<3",
+    "pyserial>=3.5",
+]
+
+[project.optional-dependencies]
+coredump = ["esp-coredump>=1.10"]
+dev = ["pytest>=8", "pytest-asyncio>=0.24"]
+
+[project.scripts]
+esp-runtime-mcp = "esp_runtime_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/esp_runtime_mcp"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["src"]

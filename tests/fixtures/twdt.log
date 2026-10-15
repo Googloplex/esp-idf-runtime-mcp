@@ -1,0 +1,12 @@
+[0;31mE (10312) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[0;31mE (10312) task_wdt:  - IDLE0 (CPU 0)[0m
+[0;31mE (10312) task_wdt: Tasks currently running:[0m
+[0;31mE (10312) task_wdt: CPU 0: busy_loop[0m
+[0;31mE (10312) task_wdt: Print CPU 0 (current core) backtrace[0m
+
+Backtrace: 0x400d5e12:0x3ffbb0e0 0x400d5e40:0x3ffbb100
+
+[0;31mE (10312) task_wdt: Print CPU 1 backtrace[0m
+
+Backtrace: 0x40084f31:0x3ffbe8a0 0x400846b9:0x3ffbe8c0
+I (10400) main: still alive

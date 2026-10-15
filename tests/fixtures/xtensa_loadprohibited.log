@@ -1,0 +1,25 @@
+I (312) cpu_start: Starting scheduler on PRO CPU.
+I (0) cpu_start: Starting scheduler on APP CPU.
+I (325) sensor: init i2c @ 400kHz
+Guru Meditation Error: Core  0 panic'ed (LoadProhibited). Exception was unhandled.
+
+Core  0 register dump:
+PC      : 0x400d2d4b  PS      : 0x00060a30  A0      : 0x800d1c2a  A1      : 0x3ffb5640  
+A2      : 0x00000000  A3      : 0x3ffb5690  A4      : 0x00000001  A5      : 0x3ffb3e10  
+A6      : 0x00000000  A7      : 0x00000000  A8      : 0x800d2d48  A9      : 0x3ffb5620  
+A10     : 0x00000000  A11     : 0x3f40b3a4  A12     : 0x00000003  A13     : 0x00000000  
+A14     : 0x00000000  A15     : 0x00000000  SAR     : 0x00000004  EXCCAUSE: 0x0000001c  
+EXCVADDR: 0x00000000  LBEG    : 0x400014fd  LEND    : 0x4000150d  LCOUNT  : 0xffffffff  
+
+
+Backtrace: 0x400d2d48:0x3ffb5640 0x400d1c27:0x3ffb5670 0x400e2a3d:0x3ffb5690
+
+
+
+
+ELF file SHA256: 4f3a9e2b1c0d8e7f
+
+Rebooting...
+ets Jun  8 2016 00:22:57
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
