@@ -48,6 +48,9 @@ def default_opener(port: str, baud: int) -> serial.SerialBase:
         s.dtr = False
         s.rts = False
         s.open()
+        # Drop whatever the OS / USB-Serial-JTAG FIFO buffered before we opened:
+        # stale lines would otherwise satisfy `expect` before the device ran.
+        s.reset_input_buffer()
         return s
     except serial.SerialException as e:
         msg = str(e)
@@ -71,15 +74,23 @@ def list_ports() -> list[dict]:
     return out
 
 
-def hard_reset(ser: serial.SerialBase, pulse_s: float = 0.1) -> None:
+def _set_rts(ser: serial.SerialBase, level: bool) -> None:
+    ser.rts = level
+    # Windows usbser.sys (USB-Serial-JTAG, CDC bridges) only sends the
+    # SET_CONTROL_LINE_STATE request on a DTR write; same trick as esptool.
+    ser.dtr = ser.dtr
+
+
+def hard_reset(ser: serial.SerialBase, pulse_s: float = 0.2) -> None:
     """Classic auto-reset circuit: RTS drives EN (inverted), DTR drives IO0.
+    USB-Serial-JTAG (ESP32-S3/C3/C6...) emulates the same lines.
 
     Keep IO0 high (DTR=False) so the chip boots the app, not the ROM loader.
     """
     ser.dtr = False
-    ser.rts = True
+    _set_rts(ser, True)
     time.sleep(pulse_s)
-    ser.rts = False
+    _set_rts(ser, False)
 
 
 @dataclass
